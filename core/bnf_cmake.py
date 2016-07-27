@@ -1,7 +1,7 @@
 #coding:UTF-8
 from pyparsing import *
 
-#保留字
+#token
 key_endfunction = Keyword("endfunction",caseless=True)
 key_function = Keyword("function",caseless=True)
 key_elseif =  Keyword("elseif",caseless=True)
@@ -14,3 +14,11 @@ key_endforeach =  Keyword("endforeach",caseless=True)
 key_foreach =  Keyword("foreach",caseless=True)
 key_endwhile =  Keyword("endwhile",caseless=True)
 key_while =  Keyword("while",caseless=True)
+line_comment = Regex('#.*')
+identifier = Regex('[A-Za-z_][A-Za-z0-9_]*')
+#identifier = Combine(Word(alphas) + ZeroOrMore(Word(alphanums+'_')))
+
+if __name__ == "__main__":
+    print line_comment.parseString("############")
+    print identifier.parseString("a")
+    print identifier.parseString("a_9")
